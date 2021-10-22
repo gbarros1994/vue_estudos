@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <!--Caso eu clicke no botao, o evento esta sendo propagado no elemento pai-->
+    <!--para contornar isso basta usar o methodo stopPropagation no js ou usar stop na diretiva do vue-->
+    
+    <div id="app">
+        <p v-on:click="onClick('p', $event)">
+            Curso de VueJs
+            <button v-on:click.stop="onClick('button', $event)">Clique</button>
+        </p>
+    </div>
+
+    <form action="">
+        <input type="text">
+        <button type="submit" v-on:click="onSubmit()">Enviar sem modificador</button>
+        <button type="submit" v-on:click.stop="onSubmit()">Enviar com modificador</button>
+    </form>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+              
+            },
+            methods: {
+                onClick: function (elementoAlvo, event) {
+                    console.log(event.type, ':', elementoAlvo);
+                },
+                onSubmit: function (event) {
+                    alert('a');
+                    console.log('formulario enviado');
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
