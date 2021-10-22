@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <a v-bind:href="docs">VueJs</a>
+        <hr>
+        <button v-on:click="onClick">Clique</button>
+
+        <hr>
+
+        <a :href="docs">VueJs</a>
+        <hr>
+        <button :click="onClick">Clique</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                docs: 'www.google.com'
+            },
+            methods: {
+                onClick(event) {
+                    console.log('botão ' + event.type)
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
