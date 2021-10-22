@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+    <!--V FOR TEM PRIORIDADE SOBRE O V-IF, ELE LISTA TUDO QUE FOI PEDIDO PARA DEPOIS RETIRAR-->
+    <!--AFETA O DESEMPENHO-->
+    <!--DEVE SER FILTRADO ANTES POR MEIO DE UM COMPUTED-->
+    
+    <div id="app">
+        <h1>Tarefas: </h1>
+        <ul>
+            <li v-for="tarefa in tarefas" :key="tarefa.id" v-if="tarefa.completa">
+                {{ tarefa.titulo }}
+            </li>
+        </ul>
+
+        <h1>Tarefas a fazer: </h1>
+        <ul>
+            <li v-for="tarefa in tarefasIncompletas" :key="tarefa.id">
+                {{ tarefa.titulo }}
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                tarefas: [
+                    {id: 1, titulo: 'Aprender JavaScript', completa: true},
+                    {id: 2, titulo: 'Aprender VueJs', completa: false},
+                    {id: 3, titulo: 'Aprender Vuex', completa: false},
+                    {id: 4, titulo: 'Aprender VueRouse', completa: false},
+                ]
+            },
+            computed: {
+                tarefasIncompletas: function() {
+                    return this.tarefas.filter(function(tarefa) {
+                        return !tarefa.completa
+                    })
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
