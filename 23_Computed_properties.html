@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <!-- VALORES DO RETORNO DAS COMPUTED DEVEM SER SINCRONOS-->
+    <!-- CASO EXITA UM METHODO QUE ALTERE A PROPRIEDADE, AUTOMATICAMENTE O COMPUTED É EXECUTADA QUANDO O METODO É CHAMADO-->
+
+    <div id="app">
+        <p>{{ cursoInvertido}}</p>
+
+        <input @keyup.enter="alterarNomeDoCurso">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                curso: 'Curso VueJs'
+            },
+            computed: {
+                cursoInvertido: function () {
+                    return this.curso.split('').reverse().join('');
+                }
+            },
+            methods: {
+                alterarNomeDoCurso: function () {
+                    this.curso = event.target.value;
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
