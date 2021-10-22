@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div class="" id="app">
+        <!--DIRETIVAS VUE JS :href, diz ao vue para monitorar o atributo href-->
+        <!--DIRETIVAS tem o trabalho de causar efeitos colaterais no DOM-->
+        <p>{{ curso }} </p>
+        <a :href="docs">VueJs</a>
+        <p>Instrutor: {{instrutor}}</p>
+        <p>Instrutor: <span v-text="instrutor"></span></p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                curso: 'Vue js', 
+                docs: 'https://google.com',
+                instrutor: 'Gerson Barros'
+            }
+        })
+    </script>
+    
+</body>
+</html>
