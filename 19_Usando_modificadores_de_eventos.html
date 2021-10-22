@@ -16,13 +16,13 @@
             Curso de VueJs
             <button v-on:click.stop="onClick('button', $event)">Clique</button>
         </p>
-    </div>
 
-    <form action="">
-        <input type="text">
-        <button type="submit" v-on:click="onSubmit()">Enviar sem modificador</button>
-        <button type="submit" v-on:click.stop="onSubmit()">Enviar com modificador</button>
-    </form>
+        <form action="">
+            <input type="text">
+            <button type="submit" v-on:click="onSubmit()">Enviar sem modificador</button>
+            <button type="submit" v-on:click.prevent="onSubmit()">Enviar com modificador</button>
+        </form>
+    </div>
 
     <script>
         new Vue({
@@ -35,7 +35,6 @@
                     console.log(event.type, ':', elementoAlvo);
                 },
                 onSubmit: function (event) {
-                    alert('a');
                     console.log('formulario enviado');
                 }
             }
