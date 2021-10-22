@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+    <!--CONSEGUIMOS TRABALHAR DE FORMA ASINCRONA-->
+    <!--TEMOS QUE INSTANCIAR O THIS, POR CAUSA DO ESCOPO-->
+    
+    <div id="app">
+        <p>{{ nomeCompleto }}</p>
+        <button @click="alterarNome">Alterar nomes</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               nomeCompleto: 'Gerson Barros'
+            },
+            watch: {
+                nomeCompleto: function (novoNomeCompleto, antigoNomeCompleto) {
+                    var vm = this;
+                    setTimeout(() => {
+                        vm.nomeCompleto = 'Nome resetado';
+                    }, 3000);
+                }
+            },
+            methods: {
+                alterarNome:function () {
+                    this.nomeCompleto = 'Barroso'
+                }
+            }
+            
+        })
+    </script>
+    
+</body>
+</html>
